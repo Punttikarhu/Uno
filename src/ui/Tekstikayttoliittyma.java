@@ -1,15 +1,8 @@
 package ui;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Scanner;
 
-import domain.kortit.Erikoiskortti;
 import domain.kortit.Kortti;
 import domain.korttipakat.Nostopakka;
 import domain.korttipakat.Poistopakka;
@@ -27,7 +20,7 @@ public class Tekstikayttoliittyma {
 	public void start() {
 		
 		System.out.println("Tervetuloa pelaamaan Uunoa. Kirjoita \"uusi\" aloittaaksesi uuden pelin,");
-		System.out.println(" \"lataa\" ladataksesi vanhan pelin tai 'lopeta' lopettaaksesi.");
+		System.out.println(" \"lataa\" ladataksesi vanhan pelin, \"ohjeet\" lukeaksesi peliohjeita tai 'lopeta' lopettaaksesi.");
 		System.out.print("> ");
 		String input = this.lukija.next();
 		
@@ -36,6 +29,13 @@ public class Tekstikayttoliittyma {
 			return;
 		case "uusi":
 			this.uusiPeli();
+			break;
+		case "lataa":
+//			lataaPeli();
+			break;
+		case "ohjeet":
+//			naytaPeliohjeet();
+			break;
 		default:
 			this.uusiPeli();
 		}
@@ -49,27 +49,17 @@ public class Tekstikayttoliittyma {
 			Pelaaja pelaaja = peli.annaPelaaja(0);
 			Poistopakka poistopakka = peli.annaPoistopakka();
 			Nostopakka nostopakka = peli.annaNostopakka();
-			
-			try {
-				PrintWriter tiedosto = new PrintWriter(new File("pelitilanne.txt"));
-				tiedosto.close();
-			} catch (Exception e) {
-				// TODO: handle exception
-			}
-			
+		
 			Kortti ensimmainenKortti = poistopakka.annaPaallimmainenKortti();
 			
-			while (ensimmainenKortti instanceof Erikoiskortti) {
-				ensimmainenKortti = nostopakka.nostaKortti();
-				poistopakka.lisaaKortti(ensimmainenKortti);
-			}
-						
+			peli.pelaaKorttiTietokone(lukija, ensimmainenKortti, null, pelaaja);
+			
 			boolean peliKesken = true;
 			while (peliKesken) {
 			
 			Pelaaja peliVuorossa = peli.annaPelaaja(peli.annaSeuraavaksiVuorossa());
-			System.out.println("Pelivuorossa on: " + peliVuorossa.annaNimi() 
-			+ " (Pisteet: " + peliVuorossa.laskePisteet() + ")");
+//			System.out.println("Pelivuorossa on: " + peliVuorossa.annaNimi() 
+//			+ " (Pisteet: " + peliVuorossa.laskePisteet() + ")");
 			System.out.println();
 			
 			
@@ -91,7 +81,7 @@ public class Tekstikayttoliittyma {
 					pelaaja.tulostaKortit();
 					
 					System.out.println("Kirjoita kortin numero pelataksesi kortin tai \"nosta\" nostaaksesi kortin.");
-					System.out.print(">");
+					System.out.print("> ");
 					String input = this.lukija.next();
 					List<Kortti> kortit = pelaaja.annaKortit();
 					if (input.equals("nosta")) {
@@ -126,6 +116,8 @@ public class Tekstikayttoliittyma {
 					if (!kelvollinenKortti) {
 						if (kortinNumero == peliVuorossa.annaKortit().size()-1) {
 							peliVuorossa.nostaKortti(nostopakka); //ei sopivaa korttia
+//							System.out.println((peli.annaPelaaja(peli.annaSeuraavaksiVuorossa()).annaNimi()) + " nosti yhden kortin"); //Faulty, saved for syntax
+							System.out.println(peliVuorossa.annaNimi() + " nosti yhden kortin"); //Vaikutti rikkovan jotain? En tied‰ varmaksi. Nyt n‰ytt‰‰ jo toimivan
 							kelvollinenKortti = true;
 						} else {
 							kortinNumero++;
@@ -134,32 +126,9 @@ public class Tekstikayttoliittyma {
 						poistopakka.lisaaKortti(k);
 						kortit.remove(kortinNumero);
 					}
-				}		
+				}
+				
 			}
-			//Tulostaminen tiedostoon
-			try {
-				
-				File tiedosto = new File("pelitilanne.txt");
-				OutputStreamWriter kirjoittaja =
-			             new OutputStreamWriter(new FileOutputStream(tiedosto), StandardCharsets.UTF_8);
-				
-				kirjoittaja.append(peli.annaPelaaja(0).toString());
-				kirjoittaja.append("\n");
-				kirjoittaja.append(peli.annaPelaaja(1).toString());
-				kirjoittaja.append("\n");
-				kirjoittaja.append(peli.annaPelaaja(2).toString());
-				kirjoittaja.append("\n");
-				kirjoittaja.append(peli.annaPelaaja(3).toString());
-				kirjoittaja.append("\n");
-				kirjoittaja.append(nostopakka.toString());
-				kirjoittaja.append("\n");
-				kirjoittaja.append(poistopakka.toString());
-				
-				kirjoittaja.close();
-			} catch (Exception e) {
-				// TODO: handle exception
-			}
-
 		}
 	}	
 }
