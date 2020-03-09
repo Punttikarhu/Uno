@@ -1,6 +1,6 @@
 package domain.kortit;
 
-public class Ohituskortti extends Kortti {
+public class Ohituskortti extends Kortti implements Erikoiskortti {
 
 	
 	public Ohituskortti(String vari) {
@@ -8,7 +8,7 @@ public class Ohituskortti extends Kortti {
 	}
 
 	public String toString() {
-		return "[" + this.vari + ", Ø]";
+		return this.vari + " ohituskortti";
 	}
 	
 }
