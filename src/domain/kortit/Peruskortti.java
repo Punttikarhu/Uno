@@ -14,7 +14,7 @@ public class Peruskortti extends Kortti {
 	}
 	
 	public String toString() {
-		return this.vari + " peruskortti numero " + this.numero;
+		return "[" + this.vari + ", " + this.numero + "]";
 	}
 	
 

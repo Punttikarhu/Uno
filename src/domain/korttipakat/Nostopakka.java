@@ -26,13 +26,4 @@ public class Nostopakka {
 			throw new IndexOutOfBoundsException();
 		}
 	}
-	
-	public String toString() {
-		StringBuilder str = new StringBuilder("");
-		str.append("Nostopakassa on kortit:\n");
-		for (Kortti kortti : this.kortit) {
-			str.append(kortti + "\n");
-		}
-		return str.toString();
-	}
 }

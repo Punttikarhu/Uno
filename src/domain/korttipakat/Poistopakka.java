@@ -20,13 +20,4 @@ public class Poistopakka {
 	public Kortti annaPaallimmainenKortti() {
 		return this.kortit.get(this.kortit.size()-1);
 	}
-	
-	public String toString() {
-		StringBuilder str = new StringBuilder("");
-		str.append("Poistopakassa olevat kortit:\n");
-		for (Kortti kortti : this.kortit) {
-			str.append(kortti + "\n");
-		}
-		return str.toString();
-	}
 }
