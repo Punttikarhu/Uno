@@ -158,7 +158,7 @@ public class Tekstikayttoliittyma {
 				
 				kirjoittaja.close();
 			} catch (Exception e) {
-				// TODO: handle exception
+				// TODO: handle exception tämä täällä noin vain muuten vain
 			}
 
 		}
