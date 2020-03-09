@@ -31,10 +31,10 @@ public class Peli {
 	
 	public Peli() {
 		this.pelaajat = new ArrayList<>();
-		this.pelaajat.add(new Ihmispelaaja("pelaaja")); // pelaaja nro 0
-		this.pelaajat.add(new Tietokonepelaaja("tietokone 1"));
-		this.pelaajat.add(new Tietokonepelaaja("tietokone 2"));		
-		this.pelaajat.add(new Tietokonepelaaja("tietokone 3"));
+		this.pelaajat.add(new Ihmispelaaja("Pelaaja")); // pelaaja nro 0
+		this.pelaajat.add(new Tietokonepelaaja("Tietokone 1"));
+		this.pelaajat.add(new Tietokonepelaaja("Tietokone 2"));		
+		this.pelaajat.add(new Tietokonepelaaja("Tietokone 3"));
 
 		
 		this.nostopakka = new Nostopakka();
@@ -158,10 +158,12 @@ public class Peli {
 		 * ottamaan vastaan Nosta kaksi -korttia tai Nosta 4-jokeri -korttia.
 		 */
 		if (kortti instanceof Jokerikortti) {
-			System.out.println("Valitse v‰ri (sininen, punainen, keltainen, vihre‰):");
-			System.out.print(">");
-			String vari = lukija.next();
-			this.vari = vari;
+			do{
+				System.out.println("Valitse v‰ri (sininen, punainen, keltainen, vihre‰):");
+				System.out.print(">");
+				String vari = lukija.next();
+				this.vari = vari;
+			}while (!(this.vari.equals("sininen")||this.vari.equals("punainen")||this.vari.equals("keltainen")||this.vari.equals("vihre‰")));
 			this.paivitaVuoronumero();			
 			kelvollinenKortti = true;
 		} 
@@ -186,10 +188,12 @@ public class Peli {
 				return false;
 			}
 			this.annaPelaaja(seuraavaksiVuorossa).nostaNeljaKorttia(this.nostopakka);
-			System.out.println("Valitse v‰ri (sininen, punainen, keltainen, vihre‰):");
-			System.out.print(">");
-			String vari = lukija.next();
-			this.vari = vari;
+			do{
+				System.out.println("Valitse v‰ri (sininen, punainen, keltainen, vihre‰):");
+				System.out.print(">");
+				String vari = lukija.next();
+				this.vari = vari;
+			}while (!(this.vari.equals("sininen")||this.vari.equals("punainen")||this.vari.equals("keltainen")||this.vari.equals("vihre‰")));
 			this.paivitaVuoronumero();
 			kelvollinenKortti = true;
 		} 
@@ -202,7 +206,7 @@ public class Peli {
 		 */
 		
 		else if (kortti instanceof NostaKaksikortti) {
-			if (!edellinenKortti.annaVari().equals(kortti.annaVari())
+			if (edellinenKortti != null && !edellinenKortti.annaVari().equals(kortti.annaVari())
 					|| edellinenKortti instanceof NostaKaksikortti) {
 				System.out.println("Nosta 2 -kortin voi lyˆd‰ samanv‰risen kortin p‰‰lle tai"
 						+ " toisen nosta 2 -kortin p‰‰lle.");
@@ -219,7 +223,7 @@ public class Peli {
 		 */
 		
 		else if (kortti instanceof Ohituskortti) {
-			if (!edellinenKortti.annaVari().equals(kortti.annaVari())
+			if (edellinenKortti != null && !edellinenKortti.annaVari().equals(kortti.annaVari())
 					|| edellinenKortti instanceof Ohituskortti) {
 				System.out.println("Ohituskortin saa lyˆd‰ samanv‰risen kortin p‰‰lle tai"
 						+ " toisen ohituskortin p‰‰lle.");
@@ -236,18 +240,20 @@ public class Peli {
 		 */
 		
 		else if (kortti instanceof Suunnanvaihtokortti) {
-			if (!edellinenKortti.annaVari().equals(kortti.annaVari())
+			if (edellinenKortti != null && !edellinenKortti.annaVari().equals(kortti.annaVari())
 					|| edellinenKortti instanceof Suunnanvaihtokortti) {
 				System.out.println("Suunnanvaihtokortin saa lyˆd‰ samanv‰risen kortin p‰‰lle tai"
 						+ " toisen suunnanvaihtokortin p‰‰lle.");
 			}
 			this.suuntaKasvava = !this.suuntaKasvava;
+			paivitaVuoronumero();
+			paivitaVuoronumero();
 			kelvollinenKortti = true;
 		} 
 		
 		else if (kortti instanceof Peruskortti) {
-			if (edellinenKortti.annaVari() != null) {
-				if (!kortti.annaVari().equals(edellinenKortti.annaVari())
+			if (edellinenKortti != null && edellinenKortti.annaVari() != null) {
+				if (!kortti.annaVari().equals(edellinenKortti.annaVari()) 
 						&& edellinenKortti instanceof Peruskortti) {
 					if (((Peruskortti) kortti).annaNumero() != ((Peruskortti) edellinenKortti).annaNumero()) {
 						//Kortti on peruskortti, mutta eriv‰rinen ja erinumeroinen kuin edellinen kortti
@@ -258,10 +264,10 @@ public class Peli {
 				if(!kortti.annaVari().equals(edellinenKortti.annaVari())) {
 					System.out.println("Kortin tulee olla samaa v‰ri‰ tai sama numero.");
 					return false;					
-				} else {
-					kelvollinenKortti = true;				
-				}	
-			} 		
+				}
+			} else {
+				kelvollinenKortti = true;				
+			}			
 		}
 		
 		this.vari = null;
@@ -280,7 +286,6 @@ public class Peli {
 				return false;
 			}
 			this.vari = null;
-			System.out.println(pelaaja.annaNimi() + " pelasi kortin: " + kortti);
 			return true;
 		}
 		
@@ -339,7 +344,6 @@ public class Peli {
 				}
 			} 
 			if (pelaajallaSopivanVarinenKortti) {
-				System.out.println("Et voi k‰ytt‰‰ Nosta 4 -korttia, jos sinulla on sopivan v‰rinen kortti.");
 				return false;
 			}
 			this.annaPelaaja(seuraavaksiVuorossa).nostaNeljaKorttia(this.nostopakka);
@@ -360,7 +364,7 @@ public class Peli {
 		 */
 		
 		else if (kortti instanceof NostaKaksikortti) {
-			if (!edellinenKortti.annaVari().equals(kortti.annaVari())
+			if (edellinenKortti != null && !edellinenKortti.annaVari().equals(kortti.annaVari())
 					|| edellinenKortti instanceof NostaKaksikortti) {
 				return false;
 			}
@@ -376,7 +380,7 @@ public class Peli {
 		 */
 		
 		else if (kortti instanceof Ohituskortti) {
-			if (!edellinenKortti.annaVari().equals(kortti.annaVari())
+			if (edellinenKortti != null && !edellinenKortti.annaVari().equals(kortti.annaVari())
 					|| edellinenKortti instanceof Ohituskortti) {
 				return false;
 			}
@@ -392,16 +396,18 @@ public class Peli {
 		 */
 		
 		else if (kortti instanceof Suunnanvaihtokortti) {
-			if (!edellinenKortti.annaVari().equals(kortti.annaVari())
+			if (edellinenKortti != null && !edellinenKortti.annaVari().equals(kortti.annaVari())
 					|| edellinenKortti instanceof Suunnanvaihtokortti) {
 			}
 			this.suuntaKasvava = !this.suuntaKasvava;
+			paivitaVuoronumero();
+			paivitaVuoronumero();
 			kelvollinenKortti = true; 
 			System.out.println(pelaaja.annaNimi() + " pelasi kortin: " + kortti);
 		} 
 		
 		else if (kortti instanceof Peruskortti) {
-			if (edellinenKortti.annaVari() != null) {
+			if (edellinenKortti != null && edellinenKortti.annaVari() != null) {
 				if (!kortti.annaVari().equals(edellinenKortti.annaVari()) 
 						&& edellinenKortti instanceof Peruskortti) {
 					if (((Peruskortti) kortti).annaNumero() != ((Peruskortti) edellinenKortti).annaNumero()) {
