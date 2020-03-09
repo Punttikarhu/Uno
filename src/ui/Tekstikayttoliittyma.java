@@ -3,6 +3,7 @@ package ui;
 import java.util.List;
 import java.util.Scanner;
 
+import domain.kortit.Erikoiskortti;
 import domain.kortit.Kortti;
 import domain.korttipakat.Nostopakka;
 import domain.korttipakat.Poistopakka;
@@ -52,7 +53,12 @@ public class Tekstikayttoliittyma {
 		
 			Kortti ensimmainenKortti = poistopakka.annaPaallimmainenKortti();
 			
-			peli.pelaaKorttiTietokone(lukija, ensimmainenKortti, null, pelaaja);
+			while (ensimmainenKortti instanceof Erikoiskortti) {
+				ensimmainenKortti = nostopakka.nostaKortti();
+				poistopakka.lisaaKortti(ensimmainenKortti);
+			}
+			
+//			peli.pelaaKorttiTietokone(lukija, ensimmainenKortti, null, pelaaja);
 			
 			boolean peliKesken = true;
 			while (peliKesken) {

@@ -1,6 +1,6 @@
 package domain.kortit;
 
-public class Suunnanvaihtokortti extends Kortti {
+public class Suunnanvaihtokortti extends Kortti implements Erikoiskortti {
 	
 	public Suunnanvaihtokortti(String vari) {
 		super(vari);
