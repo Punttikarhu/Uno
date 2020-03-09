@@ -57,9 +57,7 @@ public class Tekstikayttoliittyma {
 				ensimmainenKortti = nostopakka.nostaKortti();
 				poistopakka.lisaaKortti(ensimmainenKortti);
 			}
-			
-//			peli.pelaaKorttiTietokone(lukija, ensimmainenKortti, null, pelaaja);
-			
+						
 			boolean peliKesken = true;
 			while (peliKesken) {
 			
