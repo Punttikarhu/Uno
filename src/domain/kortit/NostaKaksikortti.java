@@ -8,6 +8,6 @@ public class NostaKaksikortti extends Kortti implements Erikoiskortti {
 	}
 
 	public String toString() {
-		return this.vari + " nosta kaksi -kortti";
+		return "[" + this.vari + ", +2]";
 	}
 }

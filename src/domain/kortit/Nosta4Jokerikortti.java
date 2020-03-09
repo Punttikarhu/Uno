@@ -7,6 +7,6 @@ public class Nosta4Jokerikortti extends Kortti implements Erikoiskortti {
 	}
 
 	public String toString() {
-		return "nosta 4 -jokerikortti";
+		return "[Jokeri, +4]";
 	}
 }

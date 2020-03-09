@@ -7,7 +7,7 @@ public class Jokerikortti extends Kortti implements Erikoiskortti {
 	}
 
 	public String toString() {
-		return "jokerikortti";
+		return "[Jokeri, väri]";
 	}
 
 }

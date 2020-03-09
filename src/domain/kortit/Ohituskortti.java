@@ -8,7 +8,7 @@ public class Ohituskortti extends Kortti implements Erikoiskortti {
 	}
 
 	public String toString() {
-		return this.vari + " ohituskortti";
+		return "[" + this.vari + ", Ø]";
 	}
 	
 }
