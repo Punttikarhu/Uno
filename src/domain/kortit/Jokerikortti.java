@@ -7,7 +7,7 @@ public class Jokerikortti extends Kortti implements Erikoiskortti {
 	}
 
 	public String toString() {
-		return "[Jokeri, v√§ri]";
+		return "[Jokeri, v‰ri]";
 	}
 
 }

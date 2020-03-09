@@ -80,14 +80,14 @@ public class Tekstikayttoliittyma {
 					System.out.println("Laitettava kortti, joka on vï¿½riltï¿½ï¿½n " 
 				+ peli.annaVari() );
 				} else {
-					System.out.print("Pakan pï¿½ï¿½limmï¿½inen kortti on: ");
+					System.out.print("Pakan päällimmäinen kortti on: ");
 					System.out.println(poistopakka.annaPaallimmainenKortti());
 				}
 				peli.paivitaVuoronumero();
 				
 				boolean korttiPelattu = false;
 				while (korttiPelattu == false) {
-					System.out.println("Sinulla on kï¿½dessï¿½si kortit:");
+					System.out.println("Sinulla on kädessäsi kortit:");
 					pelaaja.tulostaKortit();
 					
 					System.out.println("Kirjoita kortin numero pelataksesi kortin tai \"nosta\" nostaaksesi kortin.");

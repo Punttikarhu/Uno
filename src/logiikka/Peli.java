@@ -133,9 +133,9 @@ public class Peli {
 					&& !kortti.annaVari().equals(this.vari) 
 					&& !(kortti instanceof Jokerikortti)
 					&& !(kortti instanceof Nosta4Jokerikortti)) {
-				System.out.println("Sinun tulee laittaa kortti, joka on vï¿½riltï¿½ï¿½n " 
+				System.out.println("Sinun tulee laittaa kortti, joka on väriltään " 
 						+ this.vari + " tai jokerikortti tai Nosta 4- jokerikortti "
-								+ "(vain jos kï¿½dessï¿½ ei ole kyseistï¿½ vï¿½riï¿½)");
+								+ "(vain jos kädessä ei ole kyseistä väriä)");
 				return false;
 			}
 			if (kortti instanceof Nosta4Jokerikortti) {
@@ -147,23 +147,23 @@ public class Peli {
 					}
 				} 
 				if (pelaajallaSopivanVarinenKortti) {
-					System.out.println("Et voi kï¿½yttï¿½ï¿½ Nosta 4 -korttia, jos sinulla on sopivan vï¿½rinen kortti.");
+					System.out.println("Et voi käyttää Nosta 4 -korttia, jos sinulla on sopivan värinen kortti.");
 					return false;
 				}
 			}
 		}
 		/*
-		 * Jokeri ï¿½ Kortin lyï¿½nyt pelaaja saa valita seuraavaksi pelattavan vï¿½rin. 
+		 * Jokeri ä Kortin lyänyt pelaaja saa valita seuraavaksi pelattavan värin. 
 		 * Kortin saa lyï¿½dï¿½ milloin tahansa paitsi silloin, kun sen lyï¿½jï¿½ joutuu juuri 
 		 * ottamaan vastaan Nosta kaksi -korttia tai Nosta 4-jokeri -korttia.
 		 */
 		if (kortti instanceof Jokerikortti) {
 			do{
-				System.out.println("Valitse vÃ¤ri (sininen, punainen, keltainen, vihreÃ¤):");
+				System.out.println("Valitse väri (sininen, punainen, keltainen, vihreä):");
 				System.out.print(">");
 				String vari = lukija.next();
 				this.vari = vari;
-			}while (!(this.vari.equals("sininen")||this.vari.equals("punainen")||this.vari.equals("keltainen")||this.vari.equals("vihreÃ¤")));
+			}while (!(this.vari.equals("sininen")||this.vari.equals("punainen")||this.vari.equals("keltainen")||this.vari.equals("vihreä")));
 			this.paivitaVuoronumero();			
 			kelvollinenKortti = true;
 		} 
@@ -184,16 +184,16 @@ public class Peli {
 				}
 			} 
 			if (pelaajallaSopivanVarinenKortti) {
-				System.out.println("Et voi kï¿½yttï¿½ï¿½ Nosta 4 -korttia, jos sinulla on sopivan vï¿½rinen kortti.");
+				System.out.println("Et voi käyttää Nosta 4 -korttia, jos sinulla on sopivan värinen kortti.");
 				return false;
 			}
 			this.annaPelaaja(seuraavaksiVuorossa).nostaNeljaKorttia(this.nostopakka);
 			do{
-				System.out.println("Valitse vÃ¤ri (sininen, punainen, keltainen, vihreÃ¤):");
+				System.out.println("Valitse väri (sininen, punainen, keltainen, vihreä):");
 				System.out.print(">");
 				String vari = lukija.next();
 				this.vari = vari;
-			}while (!(this.vari.equals("sininen")||this.vari.equals("punainen")||this.vari.equals("keltainen")||this.vari.equals("vihreÃ¤")));
+			}while (!(this.vari.equals("sininen")||this.vari.equals("punainen")||this.vari.equals("keltainen")||this.vari.equals("vihreä")));
 			this.paivitaVuoronumero();
 			kelvollinenKortti = true;
 		} 
@@ -208,8 +208,8 @@ public class Peli {
 		else if (kortti instanceof NostaKaksikortti) {
 			if (!edellinenKortti.annaVari().equals(kortti.annaVari())
 					|| edellinenKortti instanceof NostaKaksikortti) {
-				System.out.println("Nosta 2 -kortin voi lyï¿½dï¿½ samanvï¿½risen kortin pï¿½ï¿½lle tai"
-						+ " toisen nosta 2 -kortin pï¿½ï¿½lle.");
+				System.out.println("Nosta 2 -kortin voi lyödä samanvärisen kortin päälle tai"
+						+ " toisen nosta 2 -kortin päälle.");
 				return false;
 			}
 			this.annaPelaaja(seuraavaksiVuorossa).nostaKaksiKorttia(this.nostopakka);
@@ -225,8 +225,8 @@ public class Peli {
 		else if (kortti instanceof Ohituskortti) {
 			if (!edellinenKortti.annaVari().equals(kortti.annaVari())
 					|| edellinenKortti instanceof Ohituskortti) {
-				System.out.println("Ohituskortin saa lyï¿½dï¿½ samanvï¿½risen kortin pï¿½ï¿½lle tai"
-						+ " toisen ohituskortin pï¿½ï¿½lle.");
+				System.out.println("Ohituskortin saa lyödä samanvärisen kortin päälle tai"
+						+ " toisen ohituskortin päälle.");
 				return false;
 			}
 			this.paivitaVuoronumero();
@@ -242,8 +242,8 @@ public class Peli {
 		else if (kortti instanceof Suunnanvaihtokortti) {
 			if (!edellinenKortti.annaVari().equals(kortti.annaVari())
 					|| edellinenKortti instanceof Suunnanvaihtokortti) {
-				System.out.println("Suunnanvaihtokortin saa lyï¿½dï¿½ samanvï¿½risen kortin pï¿½ï¿½lle tai"
-						+ " toisen suunnanvaihtokortin pï¿½ï¿½lle.");
+				System.out.println("Suunnanvaihtokortin saa lyödä samanvärisen kortin päälle tai"
+						+ " toisen suunnanvaihtokortin päälle.");
 			}
 			this.suuntaKasvava = !this.suuntaKasvava;
 			paivitaVuoronumero();
@@ -256,13 +256,13 @@ public class Peli {
 				if (!kortti.annaVari().equals(edellinenKortti.annaVari())
 						&& edellinenKortti instanceof Peruskortti) {
 					if (((Peruskortti) kortti).annaNumero() != ((Peruskortti) edellinenKortti).annaNumero()) {
-						//Kortti on peruskortti, mutta erivï¿½rinen ja erinumeroinen kuin edellinen kortti
-						System.out.println("Kortin tulee olla samaa vï¿½riï¿½ tai sama numero.");
+						//Kortti on peruskortti, mutta erivärinen ja erinumeroinen kuin edellinen kortti
+						System.out.println("Kortin tulee olla samaa väriä tai sama numero.");
 						return false;		
 					}
 				}
 				if(!kortti.annaVari().equals(edellinenKortti.annaVari())) {
-					System.out.println("Kortin tulee olla samaa vï¿½riï¿½ tai sama numero.");
+					System.out.println("Kortin tulee olla samaa väriä tai sama numero.");
 					return false;					
 				} else {
 					kelvollinenKortti = true;				
@@ -320,7 +320,7 @@ public class Peli {
 		 * ottamaan vastaan Nosta kaksi -korttia tai Nosta 4-jokeri -korttia.
 		 */
 		if (kortti instanceof Jokerikortti) {		
-			String[] varit = {"sininen", "punainen", "keltainen", "vihreï¿½"}; 
+			String[] varit = {"sininen", "punainen", "keltainen", "vihreä"}; 
 			int varinNumero = this.random.nextInt(4);
 			String vari = varit[varinNumero];
 			this.vari = vari;
@@ -345,11 +345,11 @@ public class Peli {
 				}
 			} 
 			if (pelaajallaSopivanVarinenKortti) {
-				System.out.println("Et voi kï¿½yttï¿½ï¿½ Nosta 4 -korttia, jos sinulla on sopivan vï¿½rinen kortti.");
+				System.out.println("Et voi käyttää Nosta 4 -korttia, jos sinulla on sopivan värinen kortti.");
 				return false;
 			}
 			this.annaPelaaja(seuraavaksiVuorossa).nostaNeljaKorttia(this.nostopakka);
-			String[] varit = {"sininen", "punainen", "keltainen", "vihreï¿½"};
+			String[] varit = {"sininen", "punainen", "keltainen", "vihreä"};
 			int varinNumero = this.random.nextInt(4);
 			String vari = varit[varinNumero];
 			this.vari = vari;
