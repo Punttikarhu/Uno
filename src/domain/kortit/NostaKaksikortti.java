@@ -1,6 +1,6 @@
 package domain.kortit;
 
-public class NostaKaksikortti extends Kortti {
+public class NostaKaksikortti extends Kortti implements Erikoiskortti {
 	
 	
 	public NostaKaksikortti(String vari) {
