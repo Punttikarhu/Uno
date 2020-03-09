@@ -7,6 +7,6 @@ public class Suunnanvaihtokortti extends Kortti implements Erikoiskortti {
 	}
 
 	public String toString() {
-		return this.vari + " suunnanvaihtokortti";
+		return "[" + this.vari + ", <->]";
 	}
 }
