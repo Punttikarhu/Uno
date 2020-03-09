@@ -72,4 +72,13 @@ public abstract class Pelaaja {
 		}
 		return summa;
 	}
+	
+	public String toString() {
+		StringBuilder str = new StringBuilder("");
+		str.append("Pelaajan " + this.nimi + " kortit:\n");
+		for (Kortti kortti : this.kortit) {
+			str.append(kortti + "\n");
+		}
+		return str.toString();
+	}
 }
