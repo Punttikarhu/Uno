@@ -31,10 +31,10 @@ public class Peli {
 	
 	public Peli() {
 		this.pelaajat = new ArrayList<>();
-		this.pelaajat.add(new Ihmispelaaja("pelaaja")); // pelaaja nro 0
-		this.pelaajat.add(new Tietokonepelaaja("tietokone 1"));
-		this.pelaajat.add(new Tietokonepelaaja("tietokone 2"));		
-		this.pelaajat.add(new Tietokonepelaaja("tietokone 3"));
+		this.pelaajat.add(new Ihmispelaaja("Pelaaja")); // pelaaja nro 0
+		this.pelaajat.add(new Tietokonepelaaja("Tietokone 1"));
+		this.pelaajat.add(new Tietokonepelaaja("Tietokone 2"));		
+		this.pelaajat.add(new Tietokonepelaaja("Tietokone 3"));
 
 		
 		this.nostopakka = new Nostopakka();
@@ -113,7 +113,7 @@ public class Peli {
 			
 		boolean kelvollinenKortti = false;
 		
-		// Edellinen pelaaja on valinnut värin
+		// Edellinen pelaaja on valinnut vï¿½rin
 		
 		if (this.vari != null) {
 			if (kortti.annaVari() != null 
@@ -125,17 +125,17 @@ public class Peli {
 		}
 		
 		// Jos edellinen kortti on Jokerikortti tai Nosta 4 -jokerikortti,
-		//niin kortin pitää olla annettua väriä tai jokerikortti tai Nosta 4 -jokerikortti.
-		// Nosta 4 -jokerikortin voi käyttää vain jos pelaajalla ei ole kyseistä väriä.
+		//niin kortin pitï¿½ï¿½ olla annettua vï¿½riï¿½ tai jokerikortti tai Nosta 4 -jokerikortti.
+		// Nosta 4 -jokerikortin voi kï¿½yttï¿½ï¿½ vain jos pelaajalla ei ole kyseistï¿½ vï¿½riï¿½.
 		
 		if (edellinenKortti instanceof Jokerikortti || edellinenKortti instanceof Nosta4Jokerikortti) {
 			if (kortti.annaVari() != null 
 					&& !kortti.annaVari().equals(this.vari) 
 					&& !(kortti instanceof Jokerikortti)
 					&& !(kortti instanceof Nosta4Jokerikortti)) {
-				System.out.println("Sinun tulee laittaa kortti, joka on väriltään " 
+				System.out.println("Sinun tulee laittaa kortti, joka on vï¿½riltï¿½ï¿½n " 
 						+ this.vari + " tai jokerikortti tai Nosta 4- jokerikortti "
-								+ "(vain jos kädessä ei ole kyseistä väriä)");
+								+ "(vain jos kï¿½dessï¿½ ei ole kyseistï¿½ vï¿½riï¿½)");
 				return false;
 			}
 			if (kortti instanceof Nosta4Jokerikortti) {
@@ -147,30 +147,32 @@ public class Peli {
 					}
 				} 
 				if (pelaajallaSopivanVarinenKortti) {
-					System.out.println("Et voi käyttää Nosta 4 -korttia, jos sinulla on sopivan värinen kortti.");
+					System.out.println("Et voi kï¿½yttï¿½ï¿½ Nosta 4 -korttia, jos sinulla on sopivan vï¿½rinen kortti.");
 					return false;
 				}
 			}
 		}
 		/*
-		 * Jokeri – Kortin lyönyt pelaaja saa valita seuraavaksi pelattavan värin. 
-		 * Kortin saa lyödä milloin tahansa paitsi silloin, kun sen lyöjä joutuu juuri 
+		 * Jokeri ï¿½ Kortin lyï¿½nyt pelaaja saa valita seuraavaksi pelattavan vï¿½rin. 
+		 * Kortin saa lyï¿½dï¿½ milloin tahansa paitsi silloin, kun sen lyï¿½jï¿½ joutuu juuri 
 		 * ottamaan vastaan Nosta kaksi -korttia tai Nosta 4-jokeri -korttia.
 		 */
 		if (kortti instanceof Jokerikortti) {
-			System.out.println("Valitse väri (sininen, punainen, keltainen, vihreä):");
-			System.out.print(">");
-			String vari = lukija.next();
-			this.vari = vari;
+			do{
+				System.out.println("Valitse vÃ¤ri (sininen, punainen, keltainen, vihreÃ¤):");
+				System.out.print(">");
+				String vari = lukija.next();
+				this.vari = vari;
+			}while (!(this.vari.equals("sininen")||this.vari.equals("punainen")||this.vari.equals("keltainen")||this.vari.equals("vihreÃ¤")));
 			this.paivitaVuoronumero();			
 			kelvollinenKortti = true;
 		} 
 		/*
-		 * Nosta 4 -jokeri – Kortin lyöneestä pelaajasta seuraava menettää vuoronsa 
-		 * ja nostaa pakasta neljä korttia. Lisäksi kortin lyönyt pelaaja saa valita 
-		 * seuraavaksi pelattavan värin. Pelaaja ei saa kuitenaan lyödä nosta 4-jokeri 
-		 * korttia silloin, kun hänellä on kädessään myös samanvärinen kortti kuin 
-		 * poistopakan päällimmäinen kortti on. Muulloin kortin voi lyödä koska vain.
+		 * Nosta 4 -jokeri ï¿½ Kortin lyï¿½neestï¿½ pelaajasta seuraava menettï¿½ï¿½ vuoronsa 
+		 * ja nostaa pakasta neljï¿½ korttia. Lisï¿½ksi kortin lyï¿½nyt pelaaja saa valita 
+		 * seuraavaksi pelattavan vï¿½rin. Pelaaja ei saa kuitenaan lyï¿½dï¿½ nosta 4-jokeri 
+		 * korttia silloin, kun hï¿½nellï¿½ on kï¿½dessï¿½ï¿½n myï¿½s samanvï¿½rinen kortti kuin 
+		 * poistopakan pï¿½ï¿½llimmï¿½inen kortti on. Muulloin kortin voi lyï¿½dï¿½ koska vain.
 		 */
 		
 		else if (kortti instanceof Nosta4Jokerikortti) {
@@ -182,30 +184,32 @@ public class Peli {
 				}
 			} 
 			if (pelaajallaSopivanVarinenKortti) {
-				System.out.println("Et voi käyttää Nosta 4 -korttia, jos sinulla on sopivan värinen kortti.");
+				System.out.println("Et voi kï¿½yttï¿½ï¿½ Nosta 4 -korttia, jos sinulla on sopivan vï¿½rinen kortti.");
 				return false;
 			}
 			this.annaPelaaja(seuraavaksiVuorossa).nostaNeljaKorttia(this.nostopakka);
-			System.out.println("Valitse väri (sininen, punainen, keltainen, vihreä):");
-			System.out.print(">");
-			String vari = lukija.next();
-			this.vari = vari;
+			do{
+				System.out.println("Valitse vÃ¤ri (sininen, punainen, keltainen, vihreÃ¤):");
+				System.out.print(">");
+				String vari = lukija.next();
+				this.vari = vari;
+			}while (!(this.vari.equals("sininen")||this.vari.equals("punainen")||this.vari.equals("keltainen")||this.vari.equals("vihreÃ¤")));
 			this.paivitaVuoronumero();
 			kelvollinenKortti = true;
 		} 
 		
 		/*
-		 * Nosta kaksi – Kortin lyöneen pelaajan jälkeen seuraavana vuorossa oleva 
-		 * menettää vuoronsa ja joutuu nostamaan pakasta kaksi korttia käteen. Nosta 
-		 * kaksi -kortin saa lyödä joko samanvärisen kortin tai myös erivärisen Nosta 
-		 * kaksi -kortin päälle.
+		 * Nosta kaksi ï¿½ Kortin lyï¿½neen pelaajan jï¿½lkeen seuraavana vuorossa oleva 
+		 * menettï¿½ï¿½ vuoronsa ja joutuu nostamaan pakasta kaksi korttia kï¿½teen. Nosta 
+		 * kaksi -kortin saa lyï¿½dï¿½ joko samanvï¿½risen kortin tai myï¿½s erivï¿½risen Nosta 
+		 * kaksi -kortin pï¿½ï¿½lle.
 		 */
 		
 		else if (kortti instanceof NostaKaksikortti) {
 			if (!edellinenKortti.annaVari().equals(kortti.annaVari())
 					|| edellinenKortti instanceof NostaKaksikortti) {
-				System.out.println("Nosta 2 -kortin voi lyödä samanvärisen kortin päälle tai"
-						+ " toisen nosta 2 -kortin päälle.");
+				System.out.println("Nosta 2 -kortin voi lyï¿½dï¿½ samanvï¿½risen kortin pï¿½ï¿½lle tai"
+						+ " toisen nosta 2 -kortin pï¿½ï¿½lle.");
 				return false;
 			}
 			this.annaPelaaja(seuraavaksiVuorossa).nostaKaksiKorttia(this.nostopakka);
@@ -214,15 +218,15 @@ public class Peli {
 		} 
 		
 		/*
-		 * Ohituskortti – Kortin lyöneestä pelaajasta seuraava menettää vuoronsa. Kortin
-		 * saa lyödä joko samanvärisen kortin tai erivärisen ohituskortin päälle.
+		 * Ohituskortti ï¿½ Kortin lyï¿½neestï¿½ pelaajasta seuraava menettï¿½ï¿½ vuoronsa. Kortin
+		 * saa lyï¿½dï¿½ joko samanvï¿½risen kortin tai erivï¿½risen ohituskortin pï¿½ï¿½lle.
 		 */
 		
 		else if (kortti instanceof Ohituskortti) {
 			if (!edellinenKortti.annaVari().equals(kortti.annaVari())
 					|| edellinenKortti instanceof Ohituskortti) {
-				System.out.println("Ohituskortin saa lyödä samanvärisen kortin päälle tai"
-						+ " toisen ohituskortin päälle.");
+				System.out.println("Ohituskortin saa lyï¿½dï¿½ samanvï¿½risen kortin pï¿½ï¿½lle tai"
+						+ " toisen ohituskortin pï¿½ï¿½lle.");
 				return false;
 			}
 			this.paivitaVuoronumero();
@@ -230,18 +234,20 @@ public class Peli {
 		} 
 		
 		/*
-		 * Suunnanvaihtokortti – Kortti vaihtaa pelaajien vuorojärjestyksen suunnan. 
-		 * Kortin saa lyödä joko samanvärisen kortin tai erivärisen Suunnanvaihtokortin 
-		 * päälle. 
+		 * Suunnanvaihtokortti ï¿½ Kortti vaihtaa pelaajien vuorojï¿½rjestyksen suunnan. 
+		 * Kortin saa lyï¿½dï¿½ joko samanvï¿½risen kortin tai erivï¿½risen Suunnanvaihtokortin 
+		 * pï¿½ï¿½lle. 
 		 */
 		
 		else if (kortti instanceof Suunnanvaihtokortti) {
 			if (!edellinenKortti.annaVari().equals(kortti.annaVari())
 					|| edellinenKortti instanceof Suunnanvaihtokortti) {
-				System.out.println("Suunnanvaihtokortin saa lyödä samanvärisen kortin päälle tai"
-						+ " toisen suunnanvaihtokortin päälle.");
+				System.out.println("Suunnanvaihtokortin saa lyï¿½dï¿½ samanvï¿½risen kortin pï¿½ï¿½lle tai"
+						+ " toisen suunnanvaihtokortin pï¿½ï¿½lle.");
 			}
 			this.suuntaKasvava = !this.suuntaKasvava;
+			paivitaVuoronumero();
+			paivitaVuoronumero();
 			kelvollinenKortti = true;
 		} 
 		
@@ -250,13 +256,13 @@ public class Peli {
 				if (!kortti.annaVari().equals(edellinenKortti.annaVari())
 						&& edellinenKortti instanceof Peruskortti) {
 					if (((Peruskortti) kortti).annaNumero() != ((Peruskortti) edellinenKortti).annaNumero()) {
-						//Kortti on peruskortti, mutta erivärinen ja erinumeroinen kuin edellinen kortti
-						System.out.println("Kortin tulee olla samaa väriä tai sama numero.");
+						//Kortti on peruskortti, mutta erivï¿½rinen ja erinumeroinen kuin edellinen kortti
+						System.out.println("Kortin tulee olla samaa vï¿½riï¿½ tai sama numero.");
 						return false;		
 					}
 				}
 				if(!kortti.annaVari().equals(edellinenKortti.annaVari())) {
-					System.out.println("Kortin tulee olla samaa väriä tai sama numero.");
+					System.out.println("Kortin tulee olla samaa vï¿½riï¿½ tai sama numero.");
 					return false;					
 				} else {
 					kelvollinenKortti = true;				
@@ -272,7 +278,7 @@ public class Peli {
 		
 		boolean kelvollinenKortti = false;
 		
-		// Edellinen pelaaja on valinnut värin
+		// Edellinen pelaaja on valinnut vï¿½rin
 		
 		if (this.vari != null) {
 			if (kortti.annaVari() != null
@@ -286,8 +292,8 @@ public class Peli {
 		
 		
 		// Jos edellinen kortti on Jokerikortti tai Nosta 4 -jokerikortti,
-		//niin kortin pitää olla annettua väriä tai jokerikortti tai Nosta 4 -jokerikortti.
-		// Nosta 4 -jokerikortin voi käyttää vain jos pelaajalla ei ole kyseistä väriä.
+		//niin kortin pitï¿½ï¿½ olla annettua vï¿½riï¿½ tai jokerikortti tai Nosta 4 -jokerikortti.
+		// Nosta 4 -jokerikortin voi kï¿½yttï¿½ï¿½ vain jos pelaajalla ei ole kyseistï¿½ vï¿½riï¿½.
 		
 		if (edellinenKortti instanceof Jokerikortti || edellinenKortti instanceof Nosta4Jokerikortti) {
 			if (kortti.annaVari() != null 
@@ -309,12 +315,12 @@ public class Peli {
 			}
 		}
 		/*
-		 * Jokeri – Kortin lyönyt pelaaja saa valita seuraavaksi pelattavan värin. 
-		 * Kortin saa lyödä milloin tahansa paitsi silloin, kun sen lyöjä joutuu juuri 
+		 * Jokeri ï¿½ Kortin lyï¿½nyt pelaaja saa valita seuraavaksi pelattavan vï¿½rin. 
+		 * Kortin saa lyï¿½dï¿½ milloin tahansa paitsi silloin, kun sen lyï¿½jï¿½ joutuu juuri 
 		 * ottamaan vastaan Nosta kaksi -korttia tai Nosta 4-jokeri -korttia.
 		 */
 		if (kortti instanceof Jokerikortti) {		
-			String[] varit = {"sininen", "punainen", "keltainen", "vihreä"}; 
+			String[] varit = {"sininen", "punainen", "keltainen", "vihreï¿½"}; 
 			int varinNumero = this.random.nextInt(4);
 			String vari = varit[varinNumero];
 			this.vari = vari;
@@ -323,11 +329,11 @@ public class Peli {
 			System.out.println(pelaaja.annaNimi() + " pelasi kortin: " + kortti);
 		} 
 		/*
-		 * Nosta 4 -jokeri – Kortin lyöneestä pelaajasta seuraava menettää vuoronsa 
-		 * ja nostaa pakasta neljä korttia. Lisäksi kortin lyönyt pelaaja saa valita 
-		 * seuraavaksi pelattavan värin. Pelaaja ei saa kuitenaan lyödä nosta 4-jokeri 
-		 * korttia silloin, kun hänellä on kädessään myös samanvärinen kortti kuin 
-		 * poistopakan päällimmäinen kortti on. Muulloin kortin voi lyödä koska vain.
+		 * Nosta 4 -jokeri ï¿½ Kortin lyï¿½neestï¿½ pelaajasta seuraava menettï¿½ï¿½ vuoronsa 
+		 * ja nostaa pakasta neljï¿½ korttia. Lisï¿½ksi kortin lyï¿½nyt pelaaja saa valita 
+		 * seuraavaksi pelattavan vï¿½rin. Pelaaja ei saa kuitenaan lyï¿½dï¿½ nosta 4-jokeri 
+		 * korttia silloin, kun hï¿½nellï¿½ on kï¿½dessï¿½ï¿½n myï¿½s samanvï¿½rinen kortti kuin 
+		 * poistopakan pï¿½ï¿½llimmï¿½inen kortti on. Muulloin kortin voi lyï¿½dï¿½ koska vain.
 		 */
 		
 		else if (kortti instanceof Nosta4Jokerikortti) {
@@ -339,11 +345,11 @@ public class Peli {
 				}
 			} 
 			if (pelaajallaSopivanVarinenKortti) {
-				System.out.println("Et voi käyttää Nosta 4 -korttia, jos sinulla on sopivan värinen kortti.");
+				System.out.println("Et voi kï¿½yttï¿½ï¿½ Nosta 4 -korttia, jos sinulla on sopivan vï¿½rinen kortti.");
 				return false;
 			}
 			this.annaPelaaja(seuraavaksiVuorossa).nostaNeljaKorttia(this.nostopakka);
-			String[] varit = {"sininen", "punainen", "keltainen", "vihreä"};
+			String[] varit = {"sininen", "punainen", "keltainen", "vihreï¿½"};
 			int varinNumero = this.random.nextInt(4);
 			String vari = varit[varinNumero];
 			this.vari = vari;
@@ -353,10 +359,10 @@ public class Peli {
 		} 
 		
 		/*
-		 * Nosta kaksi – Kortin lyöneen pelaajan jälkeen seuraavana vuorossa oleva 
-		 * menettää vuoronsa ja joutuu nostamaan pakasta kaksi korttia käteen. Nosta 
-		 * kaksi -kortin saa lyödä joko samanvärisen kortin tai myös erivärisen Nosta 
-		 * kaksi -kortin päälle.
+		 * Nosta kaksi ï¿½ Kortin lyï¿½neen pelaajan jï¿½lkeen seuraavana vuorossa oleva 
+		 * menettï¿½ï¿½ vuoronsa ja joutuu nostamaan pakasta kaksi korttia kï¿½teen. Nosta 
+		 * kaksi -kortin saa lyï¿½dï¿½ joko samanvï¿½risen kortin tai myï¿½s erivï¿½risen Nosta 
+		 * kaksi -kortin pï¿½ï¿½lle.
 		 */
 		
 		else if (kortti instanceof NostaKaksikortti) {
@@ -371,8 +377,8 @@ public class Peli {
 		} 
 		
 		/*
-		 * Ohituskortti – Kortin lyöneestä pelaajasta seuraava menettää vuoronsa. Kortin
-		 * saa lyödä joko samanvärisen kortin tai erivärisen ohituskortin päälle.
+		 * Ohituskortti ï¿½ Kortin lyï¿½neestï¿½ pelaajasta seuraava menettï¿½ï¿½ vuoronsa. Kortin
+		 * saa lyï¿½dï¿½ joko samanvï¿½risen kortin tai erivï¿½risen ohituskortin pï¿½ï¿½lle.
 		 */
 		
 		else if (kortti instanceof Ohituskortti) {
@@ -386,9 +392,9 @@ public class Peli {
 		} 
 		
 		/*
-		 * Suunnanvaihtokortti – Kortti vaihtaa pelaajien vuorojärjestyksen suunnan. 
-		 * Kortin saa lyödä joko samanvärisen kortin tai erivärisen Suunnanvaihtokortin 
-		 * päälle. 
+		 * Suunnanvaihtokortti ï¿½ Kortti vaihtaa pelaajien vuorojï¿½rjestyksen suunnan. 
+		 * Kortin saa lyï¿½dï¿½ joko samanvï¿½risen kortin tai erivï¿½risen Suunnanvaihtokortin 
+		 * pï¿½ï¿½lle. 
 		 */
 		
 		else if (kortti instanceof Suunnanvaihtokortti) {
@@ -396,6 +402,8 @@ public class Peli {
 					|| edellinenKortti instanceof Suunnanvaihtokortti) {
 			}
 			this.suuntaKasvava = !this.suuntaKasvava;
+			paivitaVuoronumero();
+			paivitaVuoronumero();
 			kelvollinenKortti = true; 
 			System.out.println(pelaaja.annaNimi() + " pelasi kortin: " + kortti);
 		} 
@@ -405,7 +413,7 @@ public class Peli {
 				if (!kortti.annaVari().equals(edellinenKortti.annaVari()) 
 						&& edellinenKortti instanceof Peruskortti) {
 					if (((Peruskortti) kortti).annaNumero() != ((Peruskortti) edellinenKortti).annaNumero()) {
-						//Kortti on peruskortti, mutta erivärinen ja erinumeroinen kuin edellinen kortti
+						//Kortti on peruskortti, mutta erivï¿½rinen ja erinumeroinen kuin edellinen kortti
 						return false;		
 					}
 				}

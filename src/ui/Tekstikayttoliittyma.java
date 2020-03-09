@@ -68,8 +68,8 @@ public class Tekstikayttoliittyma {
 			while (peliKesken) {
 			
 			Pelaaja peliVuorossa = peli.annaPelaaja(peli.annaSeuraavaksiVuorossa());
-			System.out.println("Pelivuorossa on: " + peliVuorossa.annaNimi() 
-			+ " (Pisteet: " + peliVuorossa.laskePisteet() + ")");
+//			System.out.println("Pelivuorossa on: " + peliVuorossa.annaNimi() 
+//			+ " (Pisteet: " + peliVuorossa.laskePisteet() + ")");
 			System.out.println();
 			
 			
@@ -77,21 +77,21 @@ public class Tekstikayttoliittyma {
 			if (peli.annaSeuraavaksiVuorossa() == 0) {
 				
 				if (peli.annaVari() != null) {
-					System.out.println("Laitettava kortti, joka on v‰rilt‰‰n " 
+					System.out.println("Laitettava kortti, joka on vÔøΩriltÔøΩÔøΩn " 
 				+ peli.annaVari() );
 				} else {
-					System.out.print("Pakan p‰‰limm‰inen kortti on: ");
+					System.out.print("Pakan pÔøΩÔøΩlimmÔøΩinen kortti on: ");
 					System.out.println(poistopakka.annaPaallimmainenKortti());
 				}
 				peli.paivitaVuoronumero();
 				
 				boolean korttiPelattu = false;
 				while (korttiPelattu == false) {
-					System.out.println("Sinulla on k‰dess‰si kortit:");
+					System.out.println("Sinulla on kÔøΩdessÔøΩsi kortit:");
 					pelaaja.tulostaKortit();
 					
 					System.out.println("Kirjoita kortin numero pelataksesi kortin tai \"nosta\" nostaaksesi kortin.");
-					System.out.print(">");
+					System.out.print("> ");
 					String input = this.lukija.next();
 					List<Kortti> kortit = pelaaja.annaKortit();
 					if (input.equals("nosta")) {
@@ -126,6 +126,7 @@ public class Tekstikayttoliittyma {
 					if (!kelvollinenKortti) {
 						if (kortinNumero == peliVuorossa.annaKortit().size()-1) {
 							peliVuorossa.nostaKortti(nostopakka); //ei sopivaa korttia
+							System.out.println(peliVuorossa.annaNimi() + " nosti yhden kortin"); //Vaikutti rikkovan jotain? En tied√§ varmaksi. Nyt n√§ytt√§√§ jo toimivan.
 							kelvollinenKortti = true;
 						} else {
 							kortinNumero++;
