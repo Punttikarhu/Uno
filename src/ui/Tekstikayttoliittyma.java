@@ -107,7 +107,7 @@ public class Tekstikayttoliittyma {
 				boolean korttiPelattu = false;
 				while (korttiPelattu == false) {
 					System.out.println("Sinulla on k‰dess‰si kortit:");
-					pelaaja.jarjestaKortit();
+//					pelaaja.jarjestaKortit();
 					pelaaja.tulostaKortit();
 					String input = "";
 					do { //kysyy pelaajalta uuden inputin niin kauan kunnes input t‰sm‰‰ vaatimuksiin

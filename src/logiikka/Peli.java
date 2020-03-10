@@ -417,10 +417,10 @@ public class Peli {
 				}
 				if(!kortti.annaVari().equals(edellinenKortti.annaVari())) {
 					return false;					
-				}
-			} else {
-				kelvollinenKortti = true;
-				System.out.println(pelaaja.annaNimi() + " pelasi kortin: " + kortti + "  -  Kortteja jäljellä : " + ((pelaaja.annaKortit()).size()-1));				
+				} else {
+					kelvollinenKortti = true;
+					System.out.println(pelaaja.annaNimi() + " pelasi kortin: " + kortti + "  -  Kortteja jäljellä : " + ((pelaaja.annaKortit()).size()-1));				
+				} 
 			} 
 		}
 		

@@ -1,119 +1,119 @@
-Pelaajan pelaaja kortit:
-punainen peruskortti numero 7
-sininen peruskortti numero 7
-keltainen nosta kaksi -kortti
-sininen ohituskortti
-sininen peruskortti numero 5
-jokerikortti
-keltainen peruskortti numero 2
-punainen peruskortti numero 8
-sininen peruskortti numero 6
-vihreä peruskortti numero 2
-
-Pelaajan tietokone 1 kortit:
-keltainen peruskortti numero 4
+Pelaajan Pelaaja kortit:
+vihreä peruskortti numero 5
+sininen peruskortti numero 3
 sininen nosta kaksi -kortti
-punainen peruskortti numero 9
-vihreä peruskortti numero 8
-keltainen peruskortti numero 0
-
-Pelaajan tietokone 2 kortit:
-keltainen ohituskortti
-keltainen peruskortti numero 3
-keltainen peruskortti numero 9
-vihreä ohituskortti
-vihreä peruskortti numero 6
-keltainen peruskortti numero 1
-keltainen peruskortti numero 8
-sininen peruskortti numero 1
-vihreä nosta kaksi -kortti
 keltainen peruskortti numero 7
-sininen ohituskortti
-vihreä peruskortti numero 1
-keltainen peruskortti numero 9
-keltainen peruskortti numero 5
-vihreä peruskortti numero 0
-sininen suunnanvaihtokortti
-
-Pelaajan tietokone 3 kortit:
-sininen peruskortti numero 1
-sininen peruskortti numero 5
-vihreä peruskortti numero 7
-punainen peruskortti numero 2
 keltainen peruskortti numero 8
-jokerikortti
+vihreä peruskortti numero 4
+sininen nosta kaksi -kortti
+punainen nosta kaksi -kortti
+
+Pelaajan Tietokone 1 kortit:
+sininen peruskortti numero 9
+vihreä peruskortti numero 9
+punainen peruskortti numero 5
+keltainen nosta kaksi -kortti
+vihreä ohituskortti
+
+Pelaajan Tietokone 2 kortit:
+keltainen ohituskortti
+vihreä peruskortti numero 7
+vihreä peruskortti numero 6
+sininen ohituskortti
+vihreä peruskortti numero 3
+vihreä peruskortti numero 1
+
+Pelaajan Tietokone 3 kortit:
+vihreä nosta kaksi -kortti
+keltainen peruskortti numero 1
+vihreä ohituskortti
+vihreä nosta kaksi -kortti
+keltainen peruskortti numero 3
+vihreä peruskortti numero 3
+sininen peruskortti numero 2
 
 Nostopakassa on kortit:
-punainen nosta kaksi -kortti
-keltainen peruskortti numero 6
-sininen peruskortti numero 0
-keltainen peruskortti numero 3
-nosta 4 -jokerikortti
-punainen peruskortti numero 0
-sininen peruskortti numero 7
-vihreä peruskortti numero 3
-vihreä peruskortti numero 8
-punainen peruskortti numero 8
-punainen peruskortti numero 5
-keltainen peruskortti numero 7
-keltainen suunnanvaihtokortti
-punainen peruskortti numero 4
-vihreä peruskortti numero 9
-vihreä suunnanvaihtokortti
-vihreä nosta kaksi -kortti
-punainen peruskortti numero 2
-punainen peruskortti numero 1
-keltainen suunnanvaihtokortti
-sininen peruskortti numero 3
-punainen ohituskortti
 sininen peruskortti numero 6
+punainen peruskortti numero 4
+nosta 4 -jokerikortti
+punainen peruskortti numero 6
+jokerikortti
+keltainen peruskortti numero 4
+sininen peruskortti numero 5
+punainen ohituskortti
 punainen peruskortti numero 3
 keltainen peruskortti numero 2
-vihreä peruskortti numero 5
-sininen nosta kaksi -kortti
-keltainen ohituskortti
-keltainen peruskortti numero 5
-sininen peruskortti numero 9
-keltainen nosta kaksi -kortti
-punainen peruskortti numero 7
-sininen peruskortti numero 8
-sininen peruskortti numero 2
-keltainen peruskortti numero 1
-sininen peruskortti numero 4
-punainen suunnanvaihtokortti
-punainen peruskortti numero 6
-punainen peruskortti numero 5
-vihreä peruskortti numero 5
-vihreä peruskortti numero 1
-punainen peruskortti numero 1
-keltainen peruskortti numero 6
-sininen peruskortti numero 3
-sininen peruskortti numero 8
-punainen peruskortti numero 6
+keltainen peruskortti numero 0
+vihreä peruskortti numero 6
+sininen suunnanvaihtokortti
+vihreä suunnanvaihtokortti
+keltainen peruskortti numero 8
 punainen peruskortti numero 9
-punainen nosta kaksi -kortti
-punainen ohituskortti
+jokerikortti
+sininen peruskortti numero 1
+sininen peruskortti numero 8
+punainen peruskortti numero 1
+sininen peruskortti numero 5
+sininen peruskortti numero 7
 sininen peruskortti numero 4
+punainen peruskortti numero 8
+keltainen peruskortti numero 6
+vihreä peruskortti numero 2
+punainen peruskortti numero 6
+vihreä peruskortti numero 9
+keltainen peruskortti numero 9
+sininen peruskortti numero 3
+keltainen peruskortti numero 7
+vihreä peruskortti numero 4
+nosta 4 -jokerikortti
+sininen peruskortti numero 9
+keltainen peruskortti numero 4
+sininen suunnanvaihtokortti
+nosta 4 -jokerikortti
+keltainen nosta kaksi -kortti
+jokerikortti
+punainen peruskortti numero 8
+keltainen peruskortti numero 1
+sininen peruskortti numero 6
+sininen peruskortti numero 1
+keltainen peruskortti numero 9
+vihreä peruskortti numero 8
+sininen peruskortti numero 2
+vihreä suunnanvaihtokortti
+keltainen suunnanvaihtokortti
+sininen peruskortti numero 7
+punainen ohituskortti
+keltainen peruskortti numero 6
+punainen peruskortti numero 9
+keltainen peruskortti numero 3
+vihreä peruskortti numero 8
+keltainen ohituskortti
+punainen suunnanvaihtokortti
+punainen peruskortti numero 4
+sininen peruskortti numero 0
+punainen peruskortti numero 2
+vihreä peruskortti numero 5
+punainen nosta kaksi -kortti
+sininen peruskortti numero 8
+sininen ohituskortti
+keltainen peruskortti numero 2
+vihreä peruskortti numero 0
+sininen peruskortti numero 4
+keltainen peruskortti numero 5
+punainen peruskortti numero 2
+punainen peruskortti numero 1
+nosta 4 -jokerikortti
 punainen peruskortti numero 3
 punainen suunnanvaihtokortti
+vihreä peruskortti numero 7
 vihreä peruskortti numero 2
 jokerikortti
-punainen peruskortti numero 4
-vihreä suunnanvaihtokortti
-sininen peruskortti numero 2
-keltainen peruskortti numero 4
-vihreä peruskortti numero 9
-vihreä peruskortti numero 6
-vihreä peruskortti numero 3
-sininen peruskortti numero 9
-vihreä peruskortti numero 4
-sininen suunnanvaihtokortti
-vihreä peruskortti numero 4
+punainen peruskortti numero 5
+vihreä peruskortti numero 1
+punainen peruskortti numero 7
 
 Poistopakassa olevat kortit:
-vihreä peruskortti numero 7
-vihreä ohituskortti
-jokerikortti
-nosta 4 -jokerikortti
-nosta 4 -jokerikortti
-nosta 4 -jokerikortti
+punainen peruskortti numero 7
+punainen peruskortti numero 0
+keltainen suunnanvaihtokortti
+keltainen peruskortti numero 5
