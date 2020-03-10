@@ -32,7 +32,8 @@ public class Tekstikayttoliittyma {
 	public void start() {
 		
 		System.out.println("Tervetuloa pelaamaan Uunoa. Kirjoita \"uusi\" aloittaaksesi uuden pelin,");
-		System.out.println(" \"lataa\" ladataksesi vanhan pelin tai 'lopeta' lopettaaksesi.");
+		System.out.println(" \"lataa\" ladataksesi vanhan pelin, tai 'lopeta' lopettaaksesi,");
+		System.out.println(" tai \"pistelista\" näyttääksesi pistelistan");
 		System.out.print("> ");
 		String input = this.lukija.next();
 		
@@ -41,6 +42,21 @@ public class Tekstikayttoliittyma {
 			return;
 		case "uusi":
 			this.uusiPeli();
+		case "pistelista":
+			System.out.println(" Kirjoita \"tietty\" jos etsit jonkun pelaajan tietoja,");
+			System.out.println(" tai \"lista\" jos haluat tulostaa kaikkien pelaajien tiedot");
+			System.out.println(">");
+			
+			switch (lukija.next()) {
+			case "tietty":
+				System.out.println(" Kirjoita etsimäsi pelaajan nimi");
+				System.out.println(">");
+				new Pistelista().haeTiedot(lukija.next());
+				return;
+			case "lista":
+				new Pistelista().tulostaLista();
+				return;
+			}
 		default:
 			this.uusiPeli();
 		}
