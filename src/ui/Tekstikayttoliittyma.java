@@ -30,10 +30,13 @@ public class Tekstikayttoliittyma {
 	}
 	
 	public void start() {
-		
+	boolean looppaa = false;
+	do {	
+		looppaa = false;
+		System.out.println();
 		System.out.println("Tervetuloa pelaamaan Uunoa. Kirjoita \"uusi\" aloittaaksesi uuden pelin,");
-		System.out.println(" \"lataa\" ladataksesi vanhan pelin, tai 'lopeta' lopettaaksesi,");
-		System.out.println(" tai \"pistelista\" n‰ytt‰‰ksesi pistelistan");
+		System.out.println(" \"lataa\" ladataksesi vanhan pelin tai 'lopeta' lopettaaksesi.");
+		System.out.println("Kirjoita \"ohjeet\" n‰hd‰ksesi ohjeet ja s‰‰nnˆt");
 		System.out.print("> ");
 		String input = this.lukija.next();
 		
@@ -42,24 +45,35 @@ public class Tekstikayttoliittyma {
 			return;
 		case "uusi":
 			this.uusiPeli();
-		case "pistelista":
-			System.out.println(" Kirjoita \"tietty\" jos etsit jonkun pelaajan tietoja,");
-			System.out.println(" tai \"lista\" jos haluat tulostaa kaikkien pelaajien tiedot");
-			System.out.println(">");
-			
-			switch (lukija.next()) {
-			case "tietty":
-				System.out.println(" Kirjoita etsim‰si pelaajan nimi");
-				System.out.println(">");
-				new Pistelista().haeTiedot(lukija.next());
-				return;
-			case "lista":
-				new Pistelista().tulostaLista();
-				return;
-			}
+		case "ohjeet":
+			looppaa = true;
+			ohjeet();
 		default:
-			this.uusiPeli();
+			looppaa = true;
 		}
+	}while(looppaa);
+	}
+	
+	public void ohjeet() {
+		System.out.println();
+		System.out.println("Pelin tavoite on p‰‰st‰ eroon kaikista korteista. Ensimm‰inen pelaaja joka");
+		System.out.println("p‰‰see eroon kaikista korteistaan voittaa pelin. Voit pelata vuorollasi kortin,");
+		System.out.println("joka on joko samaa v‰ri‰ tai numeroa, tai samanlainen erikoiskortti kuin edellinen.");
+		System.out.println();
+		System.out.println("Erikoiskortit:");
+		System.out.println("(+2) Nosta kaksi - Seuraava pelaaja nostaa kaksi korttia ja menett‰‰ vuoronsa");
+		System.out.println("(<->) Suunnanvaihto - Pelin vuorosuunta k‰‰ntyy toiseen suuntaan.");
+		System.out.println("(ªoª) Ohitus - Seuraava pelaaja menett‰‰ vuoronsa");
+		System.out.println("('v‰ri') Jokeri - V‰ritˆn kortti, jonka voi pelata mink‰ tahansa kortin p‰‰lle, ja p‰‰tt‰‰ mill‰ v‰rill‰ peli jatkuu.");
+		System.out.println("(+4) Nosta nelj‰ -jokeri - Kuin Jokeri, mutta seuraava pelaaja nostaa nelj‰ korttia ja menett‰‰ vuoronsa.");
+		System.out.println("Nosta nelj‰ -jokerin - voi pelata vain jos pelaajalla ei ole edellist‰ korttia vastaavaa maata.");
+		System.out.println();
+		System.out.println("Korttisi ovat numeroitu ja j‰rjestetty valmiiksi. Pelataksesi kortin vuorollasi, kirjoita korttia vastaava");
+		System.out.println("j‰rjestysnumero tai 'nosta', nostaaksesi pakasta kortin jos mik‰‰n korteistasi ei sovi.");		
+		System.out.println();
+		System.out.println("...");
+		System.out.println();
+
 	}
 	
 	//Varmistaa ettei kortin numeroa tai komentoa kysytt‰ess‰ ohjelma ei kaadu v‰‰r‰nlaiseen inputtiin
