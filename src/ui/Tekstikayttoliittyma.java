@@ -60,9 +60,9 @@ public class Tekstikayttoliittyma {
 				new Pistelista().tulostaLista();
 				return;
 			}
-			case "ohjeet":
-			looppaa = true;
-			ohjeet();
+		case "ohjeet":
+		looppaa = true;
+		ohjeet();
 		default:
 			looppaa = true;
 		}
