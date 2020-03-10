@@ -17,6 +17,8 @@ import domain.korttipakat.Poistopakka;
 import domain.pelaajat.Pelaaja;
 import domain.kortit.Jokerikortti;
 import domain.kortit.Nosta4Jokerikortti;
+import domain.kortit.NostaKaksikortti;
+import domain.kortit.Ohituskortti;
 import logiikka.Peli;
 
 public class Tekstikayttoliittyma {
@@ -107,7 +109,7 @@ public class Tekstikayttoliittyma {
 				boolean korttiPelattu = false;
 				while (korttiPelattu == false) {
 					System.out.println("Sinulla on k‰dess‰si kortit:");
-//					pelaaja.jarjestaKortit();
+					pelaaja.jarjestaKortit();
 					pelaaja.tulostaKortit();
 					String input = "";
 					do { //kysyy pelaajalta uuden inputin niin kauan kunnes input t‰sm‰‰ vaatimuksiin
@@ -132,7 +134,25 @@ public class Tekstikayttoliittyma {
 						kortit.remove(kortinNumero);
 						System.out.println("");
 						System.out.println("Pelasit kortin: " + k + "  -  Kortteja j‰ljell‰ : " + (pelaaja.annaKortit()).size());
-					}				
+						String playerDeclare = "";
+						if(peli.annaSuuntaKasvava()) {
+							playerDeclare = "Tietokone 1";
+						}
+						else {playerDeclare = "Tietokone 3";}
+						if(k instanceof Nosta4Jokerikortti) {
+							System.out.println();
+							System.out.println(playerDeclare + " nosti nelj‰ korttia");
+						}
+						if(k instanceof Ohituskortti) {
+							System.out.println();
+							System.out.println(playerDeclare + " menetti vuoronsa");							
+						}
+						if(k instanceof NostaKaksikortti) {
+							System.out.println();
+							System.out.println(playerDeclare + " nosti kaksi korttia");
+						}
+					}
+					
 				}
 					
 			} else { // tietokonepelaaja

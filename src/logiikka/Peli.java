@@ -351,9 +351,12 @@ public class Peli {
 			int varinNumero = this.random.nextInt(4);
 			String vari = varit[varinNumero];
 			this.vari = vari;
-			this.paivitaVuoronumero();
 			kelvollinenKortti = true;
 			System.out.println(pelaaja.annaNimi() + " pelasi kortin: " + kortti + "  -  Kortteja jäljellä : " + ((pelaaja.annaKortit()).size()-1));
+			System.out.println();
+			System.out.println((this.annaPelaaja(seuraavaksiVuorossa)).annaNimi() + " nosti neljä korttia");
+			this.paivitaVuoronumero();
+
 		} 
 		
 		/*
@@ -369,9 +372,12 @@ public class Peli {
 				return false;
 			}
 			this.annaPelaaja(seuraavaksiVuorossa).nostaKaksiKorttia(this.nostopakka);
-			this.paivitaVuoronumero();
 			kelvollinenKortti = true;
 			System.out.println(pelaaja.annaNimi() + " pelasi kortin: " + kortti + "  -  Kortteja jäljellä : " + ((pelaaja.annaKortit()).size()-1));
+			System.out.println();
+			System.out.println((this.annaPelaaja(seuraavaksiVuorossa)).annaNimi() + " nosti kaksi korttia");
+			this.paivitaVuoronumero();
+
 		} 
 		
 		/*
@@ -384,9 +390,12 @@ public class Peli {
 					|| edellinenKortti instanceof Ohituskortti) {
 				return false;
 			}
-			this.paivitaVuoronumero();
 			kelvollinenKortti = true;
 			System.out.println(pelaaja.annaNimi() + " pelasi kortin: " + kortti + "  -  Kortteja jäljellä : " + ((pelaaja.annaKortit()).size()-1));
+			System.out.println();
+			System.out.println((this.annaPelaaja(seuraavaksiVuorossa)).annaNimi() + " menetti vuoronsa");
+			this.paivitaVuoronumero();
+
 		} 
 		
 		/*
