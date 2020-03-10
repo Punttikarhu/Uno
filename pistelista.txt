@@ -1,0 +1,7 @@
+nimi: Rasmus
+pelit: 2
+voitot: 1
+
+nimi: Tommi
+pelit: 5
+voitot: 3
