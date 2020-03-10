@@ -117,7 +117,7 @@ public class Peli {
 		
 		if (this.vari != null) {
 			if (kortti.annaVari() != null 
-					&& kortti.annaVari().equals(this.vari)) {
+					&& !(kortti.annaVari().equals(this.vari))) {
 				return false;
 			}
 			this.vari = null;
@@ -261,7 +261,7 @@ public class Peli {
 						return false;		
 					}
 				}
-				if(!kortti.annaVari().equals(edellinenKortti.annaVari())) {
+				if(!kortti.annaVari().equals(edellinenKortti.annaVari())&&((Peruskortti) kortti).annaNumero()!=((Peruskortti) edellinenKortti).annaNumero() ) {  
 					System.out.println("Kortin tulee olla samaa väriä tai sama numero.");
 					return false;					
 				} else {
@@ -270,7 +270,7 @@ public class Peli {
 			} 		
 		}
 		
-		this.vari = null;
+//		this.vari = null;
 		return kelvollinenKortti;
 	}
 	
@@ -282,7 +282,7 @@ public class Peli {
 		
 		if (this.vari != null) {
 			if (kortti.annaVari() != null
-					&& kortti.annaVari().equals(this.vari)) {
+					&& !(kortti.annaVari().equals(this.vari))) {
 				return false;
 			}
 			this.vari = null;
@@ -419,7 +419,7 @@ public class Peli {
 			if (edellinenKortti.annaVari() != null) {
 				if (!kortti.annaVari().equals(edellinenKortti.annaVari()) 
 						&& edellinenKortti instanceof Peruskortti) {
-					if (((Peruskortti) kortti).annaNumero() != ((Peruskortti) edellinenKortti).annaNumero()) {
+					if(!kortti.annaVari().equals(edellinenKortti.annaVari())&&((Peruskortti) kortti).annaNumero()!=((Peruskortti) edellinenKortti).annaNumero() ) {  
 						//Kortti on peruskortti, mutta erivï¿½rinen ja erinumeroinen kuin edellinen kortti
 						return false;		
 					}
@@ -433,7 +433,7 @@ public class Peli {
 			} 
 		}
 		
-		this.vari = null;
+//		this.vari = null;
 		return kelvollinenKortti;
 	}
 
