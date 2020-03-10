@@ -24,10 +24,23 @@ import logiikka.Peli;
 public class Tekstikayttoliittyma {
 	
 	Scanner lukija;
+	String PlayerName;
+	Pistelista pistari;
 	
 	public Tekstikayttoliittyma() {
 		lukija = new Scanner(System.in);
+		pistari = new Pistelista();
+		PlayerName = "Pelaaja";
 	}
+	
+	public void pelaajaVoitto() {
+		pistari.lisaaVoitto(PlayerName);
+	}
+	
+	public void pelaajaHavio() {
+		pistari.lisaaHavio(PlayerName);
+	}
+	
 	
 	public void start() {
 	boolean looppaa = false;
@@ -37,10 +50,22 @@ public class Tekstikayttoliittyma {
 		System.out.println("Tervetuloa pelaamaan Uunoa. Kirjoita \"uusi\" aloittaaksesi uuden pelin,");
 		System.out.println(" \"lataa\" ladataksesi vanhan pelin tai 'lopeta' lopettaaksesi.");
 		System.out.println("Kirjoita \"ohjeet\" nähdäksesi ohjeet ja säännöt");
-		System.out.println("Kirjoita \"pistelista\" nähdäksesi pistelistan");		
+		System.out.println("Kirjoita \"nimi [NIMI]\" pitääksesi kirjaa omista voitoistasi");
+		System.out.println("Kirjoita \"pistelista\" nähdäksesi pistelistan");	
 		System.out.print("> ");
-		String input = this.lukija.next();
-		
+		String input = this.lukija.nextLine();
+		String nimiavain = input.substring(0,5);
+		try {
+			if (nimiavain.equals("nimi ")) {
+				PlayerName = input.substring(5, input.length());
+				System.out.println();
+				System.out.println("Tallennettu, nimi: " + PlayerName);
+				System.out.println();
+				input = "";
+				looppaa = true;
+				continue;
+			}
+		}catch(Exception e) {}
 		switch (input) {
 		case "lopeta":
 			return;
@@ -175,6 +200,14 @@ public class Tekstikayttoliittyma {
 						kortit.remove(kortinNumero);
 						System.out.println("");
 						System.out.println("Pelasit kortin: " + k + "  -  Kortteja jäljellä : " + (pelaaja.annaKortit()).size());
+						if(pelaaja.annaKortit().size()==0) {
+							pelaajaVoitto();
+							System.out.println("");
+							System.out.println("VOITIT PELIN!");
+							System.out.println("");
+							System.exit(0);
+						}
+						//Pitäisi katkaista peli?
 						String playerDeclare = "";
 						if(peli.annaSuuntaKasvava()) {
 							playerDeclare = "Tietokone 1";
@@ -223,6 +256,13 @@ public class Tekstikayttoliittyma {
 					} else {
 						poistopakka.lisaaKortti(k);
 						kortit.remove(kortinNumero);
+						if((peliVuorossa.annaKortit()).size()==0) {
+							pelaajaHavio();
+							System.out.println("");
+							System.out.println("HÄVISIT PELIN!");
+							System.out.println("");	
+							System.exit(0);
+						}
 					}
 				}		
 			}

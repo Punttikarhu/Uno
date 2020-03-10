@@ -1,0 +1,4 @@
+
+nimi: Pelaaja
+pelit: 1
+voitot: 0

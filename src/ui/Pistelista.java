@@ -108,7 +108,7 @@ public class Pistelista {
 		
 		while(sc.hasNextLine()) {
 			if (sc.nextLine().equals("nimi: " + teksti)) {
-				System.out.println("Teksti löytyi riviltä: " + (riviNum + 1));
+//				System.out.println("Teksti löytyi riviltä: " + (riviNum + 1));     //valmiisen tuotokseen ei päälle, muuten ok
 				return riviNum;
 			}
 			
