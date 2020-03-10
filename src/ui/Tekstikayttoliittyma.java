@@ -54,8 +54,8 @@ public class Tekstikayttoliittyma {
 		System.out.println("Kirjoita \"pistelista\" nähdäksesi pistelistan");	
 		System.out.print("> ");
 		String input = this.lukija.nextLine();
-		String nimiavain = input.substring(0,5);
 		try {
+			String nimiavain = input.substring(0,5);
 			if (nimiavain.equals("nimi ")) {
 				PlayerName = input.substring(5, input.length());
 				System.out.println();
