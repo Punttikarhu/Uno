@@ -164,7 +164,6 @@ public class Peli {
 				String vari = lukija.next();
 				this.vari = vari;
 			}while (!(this.vari.equals("sininen")||this.vari.equals("punainen")||this.vari.equals("keltainen")||this.vari.equals("vihreä")));
-			this.paivitaVuoronumero();			
 			kelvollinenKortti = true;
 		} 
 		/*
@@ -244,6 +243,7 @@ public class Peli {
 					|| edellinenKortti instanceof Suunnanvaihtokortti) {
 				System.out.println("Suunnanvaihtokortin saa lyödä samanvärisen kortin päälle tai"
 						+ " toisen suunnanvaihtokortin päälle.");
+				return false;
 			}
 			this.suuntaKasvava = !this.suuntaKasvava;
 			paivitaVuoronumero();
@@ -286,7 +286,7 @@ public class Peli {
 				return false;
 			}
 			this.vari = null;
-			System.out.println(pelaaja.annaNimi() + " pelasi kortin: " + kortti);
+			System.out.println(pelaaja.annaNimi() + " pelasi kortin: " + kortti + "  -  Kortteja jäljellä : " + ((pelaaja.annaKortit()).size()-1));
 			return true;
 		}
 		
@@ -323,10 +323,9 @@ public class Peli {
 			String[] varit = {"sininen", "punainen", "keltainen", "vihreä"}; 
 			int varinNumero = this.random.nextInt(4);
 			String vari = varit[varinNumero];
-			this.vari = vari;
-			this.paivitaVuoronumero();			
+			this.vari = vari;			
 			kelvollinenKortti = true;
-			System.out.println(pelaaja.annaNimi() + " pelasi kortin: " + kortti);
+			System.out.println(pelaaja.annaNimi() + " pelasi kortin: " + kortti + "  -  Kortteja jäljellä : " + ((pelaaja.annaKortit()).size()-1));
 		} 
 		/*
 		 * Nosta 4 -jokeri ï¿½ Kortin lyï¿½neestï¿½ pelaajasta seuraava menettï¿½ï¿½ vuoronsa 
@@ -354,7 +353,7 @@ public class Peli {
 			this.vari = vari;
 			this.paivitaVuoronumero();
 			kelvollinenKortti = true;
-			System.out.println(pelaaja.annaNimi() + " pelasi kortin: " + kortti);
+			System.out.println(pelaaja.annaNimi() + " pelasi kortin: " + kortti + "  -  Kortteja jäljellä : " + ((pelaaja.annaKortit()).size()-1));
 		} 
 		
 		/*
@@ -372,7 +371,7 @@ public class Peli {
 			this.annaPelaaja(seuraavaksiVuorossa).nostaKaksiKorttia(this.nostopakka);
 			this.paivitaVuoronumero();
 			kelvollinenKortti = true;
-			System.out.println(pelaaja.annaNimi() + " pelasi kortin: " + kortti);
+			System.out.println(pelaaja.annaNimi() + " pelasi kortin: " + kortti + "  -  Kortteja jäljellä : " + ((pelaaja.annaKortit()).size()-1));
 		} 
 		
 		/*
@@ -387,7 +386,7 @@ public class Peli {
 			}
 			this.paivitaVuoronumero();
 			kelvollinenKortti = true;
-			System.out.println(pelaaja.annaNimi() + " pelasi kortin: " + kortti);
+			System.out.println(pelaaja.annaNimi() + " pelasi kortin: " + kortti + "  -  Kortteja jäljellä : " + ((pelaaja.annaKortit()).size()-1));
 		} 
 		
 		/*
@@ -404,7 +403,7 @@ public class Peli {
 			paivitaVuoronumero();
 			paivitaVuoronumero();
 			kelvollinenKortti = true; 
-			System.out.println(pelaaja.annaNimi() + " pelasi kortin: " + kortti);
+			System.out.println(pelaaja.annaNimi() + " pelasi kortin: " + kortti + "  -  Kortteja jäljellä : " + ((pelaaja.annaKortit()).size()-1));
 		} 
 		
 		else if (kortti instanceof Peruskortti) {
@@ -421,7 +420,7 @@ public class Peli {
 				}
 			} else {
 				kelvollinenKortti = true;
-				System.out.println(pelaaja.annaNimi() + " pelasi kortin: " + kortti);				
+				System.out.println(pelaaja.annaNimi() + " pelasi kortin: " + kortti + "  -  Kortteja jäljellä : " + ((pelaaja.annaKortit()).size()-1));				
 			} 
 		}
 		

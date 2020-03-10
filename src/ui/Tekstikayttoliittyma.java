@@ -8,12 +8,15 @@ import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 import domain.kortit.Erikoiskortti;
 import domain.kortit.Kortti;
 import domain.korttipakat.Nostopakka;
 import domain.korttipakat.Poistopakka;
 import domain.pelaajat.Pelaaja;
+import domain.kortit.Jokerikortti;
+import domain.kortit.Nosta4Jokerikortti;
 import logiikka.Peli;
 
 public class Tekstikayttoliittyma {
@@ -39,6 +42,16 @@ public class Tekstikayttoliittyma {
 		default:
 			this.uusiPeli();
 		}
+	}
+	
+	//Varmistaa ettei kortin numeroa tai komentoa kysytt‰ess‰ ohjelma ei kaadu v‰‰r‰nlaiseen inputtiin
+	public boolean checkCardParameters(String input, Pelaaja pelaaja) {
+		try {
+			if(((Integer.valueOf(input)<(pelaaja.annaKortit()).size())&&Integer.valueOf(input)>=0)) {
+				return true;
+			}
+		}catch(Exception e) {return false;}
+		return false;
 	}
 		
 	public void uusiPeli() {
@@ -68,6 +81,7 @@ public class Tekstikayttoliittyma {
 			while (peliKesken) {
 			
 			Pelaaja peliVuorossa = peli.annaPelaaja(peli.annaSeuraavaksiVuorossa());
+			//Ei v‰ltt‰m‰tt‰ tarvita pistelaskua viel‰ t‰h‰n kohtaan
 //			System.out.println("Pelivuorossa on: " + peliVuorossa.annaNimi() 
 //			+ " (Pisteet: " + peliVuorossa.laskePisteet() + ")");
 			System.out.println();
@@ -75,13 +89,18 @@ public class Tekstikayttoliittyma {
 			
 			//ihmispelaaja
 			if (peli.annaSeuraavaksiVuorossa() == 0) {
-				
+				try {
+					TimeUnit.SECONDS.sleep(1); //odottaa vuorojen v‰liss‰ realismin luomiseksi
+				}catch(Exception e) {}
 				if (peli.annaVari() != null) {
-					System.out.println("Laitettava kortti, joka on vÔøΩriltÔøΩÔøΩn " 
+					System.out.println("Laitettava kortti, joka on v‰rilt‰‰n " 
 				+ peli.annaVari() );
 				} else {
 					System.out.print("Pakan p‰‰llimm‰inen kortti on: ");
 					System.out.println(poistopakka.annaPaallimmainenKortti());
+					if(poistopakka.annaPaallimmainenKortti() instanceof Jokerikortti || poistopakka.annaPaallimmainenKortti() instanceof Nosta4Jokerikortti) {
+						System.out.println("Vaadittu v‰ri on: " + peli.annaVari());
+					}
 				}
 				peli.paivitaVuoronumero();
 				
@@ -90,13 +109,16 @@ public class Tekstikayttoliittyma {
 					System.out.println("Sinulla on k‰dess‰si kortit:");
 					pelaaja.jarjestaKortit();
 					pelaaja.tulostaKortit();
-					
-					System.out.println("Kirjoita kortin numero pelataksesi kortin tai \"nosta\" nostaaksesi kortin.");
-					System.out.print("> ");
-					String input = this.lukija.next();
+					String input = "";
+					do { //kysyy pelaajalta uuden inputin niin kauan kunnes input t‰sm‰‰ vaatimuksiin
+						System.out.println("Kirjoita kortin numero pelataksesi kortin tai \"nosta\" nostaaksesi kortin.");
+						System.out.print("> ");
+						input = this.lukija.next();
+					}while(!(input.equals("nosta")||checkCardParameters(input, pelaaja)));
 					List<Kortti> kortit = pelaaja.annaKortit();
 					if (input.equals("nosta")) {
 						pelaaja.nostaKortti(nostopakka);
+						System.out.println("Nostit yhden kortin   -  Kortteja j‰ljell‰ : " + (pelaaja.annaKortit()).size());
 						break;
 					}
 					int kortinNumero = Integer.valueOf(input);
@@ -108,10 +130,15 @@ public class Tekstikayttoliittyma {
 					if (korttiPelattu) {
 						poistopakka.lisaaKortti(k);
 						kortit.remove(kortinNumero);
+						System.out.println("");
+						System.out.println("Pelasit kortin: " + k + "  -  Kortteja j‰ljell‰ : " + (pelaaja.annaKortit()).size());
 					}				
 				}
 					
 			} else { // tietokonepelaaja
+				try {
+					TimeUnit.SECONDS.sleep(1); //odottaa vuorojen v‰liss‰ realismin luomiseksi
+				}catch(Exception e) {}
 				peli.paivitaVuoronumero();
 				
 				boolean kelvollinenKortti = false;
@@ -127,7 +154,7 @@ public class Tekstikayttoliittyma {
 					if (!kelvollinenKortti) {
 						if (kortinNumero == peliVuorossa.annaKortit().size()-1) {
 							peliVuorossa.nostaKortti(nostopakka); //ei sopivaa korttia
-							System.out.println(peliVuorossa.annaNimi() + " nosti yhden kortin"); //Vaikutti rikkovan jotain? En tied√§ varmaksi. Nyt n√§ytt√§√§ jo toimivan.
+							System.out.println(peliVuorossa.annaNimi() + " nosti yhden kortin" + "  -  Kortteja j‰ljell‰ : " + (peliVuorossa.annaKortit()).size()); //Vaikutti rikkovan jotain? En tied√§ varmaksi. Nyt n√§ytt√§√§ jo toimivan.
 							kelvollinenKortti = true;
 						} else {
 							kortinNumero++;
