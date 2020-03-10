@@ -10,4 +10,8 @@ public class NostaKaksikortti extends Kortti implements Erikoiskortti {
 	public String toString() {
 		return "[" + this.vari + ", +2]";
 	}
+	
+	public int annaNumero() {
+		return 12;
+	}
 }

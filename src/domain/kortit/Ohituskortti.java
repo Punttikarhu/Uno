@@ -11,4 +11,7 @@ public class Ohituskortti extends Kortti implements Erikoiskortti {
 		return "[" + this.vari + ", »o»]";
 	}
 	
+	public int annaNumero() {
+		return 11;
+	}
 }

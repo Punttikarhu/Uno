@@ -9,4 +9,8 @@ public class Suunnanvaihtokortti extends Kortti implements Erikoiskortti {
 	public String toString() {
 		return "[" + this.vari + ", <->]";
 	}
+	
+	public int annaNumero() {
+		return 13;
+	}
 }
