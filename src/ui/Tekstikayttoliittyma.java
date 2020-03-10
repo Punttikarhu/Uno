@@ -94,15 +94,11 @@ public class Tekstikayttoliittyma {
 				try {
 					TimeUnit.SECONDS.sleep(1); //odottaa vuorojen v‰liss‰ realismin luomiseksi
 				}catch(Exception e) {}
-				if (peli.annaVari() != null) {
-					System.out.println("Laitettava kortti, joka on v‰rilt‰‰n " 
-				+ peli.annaVari() );
-				} else {
-					System.out.print("Pakan p‰‰llimm‰inen kortti on: ");
-					System.out.println(poistopakka.annaPaallimmainenKortti());
-					if(poistopakka.annaPaallimmainenKortti() instanceof Jokerikortti || poistopakka.annaPaallimmainenKortti() instanceof Nosta4Jokerikortti) {
-						System.out.println("Vaadittu v‰ri on: " + peli.annaVari());
-					}
+				System.out.print("Pakan p‰‰llimm‰inen kortti on: ");
+				System.out.println(poistopakka.annaPaallimmainenKortti());
+				if(poistopakka.annaPaallimmainenKortti() instanceof Jokerikortti || poistopakka.annaPaallimmainenKortti() instanceof Nosta4Jokerikortti) {
+					System.out.println("Vaadittu v‰ri on: " + peli.annaVari());
+					
 				}
 				peli.paivitaVuoronumero();
 				
