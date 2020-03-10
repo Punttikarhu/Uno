@@ -88,6 +88,7 @@ public class Tekstikayttoliittyma {
 				boolean korttiPelattu = false;
 				while (korttiPelattu == false) {
 					System.out.println("Sinulla on kädessäsi kortit:");
+					pelaaja.jarjestaKortit();
 					pelaaja.tulostaKortit();
 					
 					System.out.println("Kirjoita kortin numero pelataksesi kortin tai \"nosta\" nostaaksesi kortin.");

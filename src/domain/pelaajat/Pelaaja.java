@@ -11,6 +11,7 @@ import domain.kortit.Ohituskortti;
 import domain.kortit.Peruskortti;
 import domain.kortit.Suunnanvaihtokortti;
 import domain.korttipakat.Nostopakka;
+import domain.kortit.Erikoiskortti;
 
 public abstract class Pelaaja {
 	
@@ -25,6 +26,51 @@ public abstract class Pelaaja {
 	public void lisaaKortti(Kortti k) {
 		this.kortit.add(k);
 	}
+	
+	//J‰rjest‰‰ kortit v‰ri ja numero/merkki j‰rjestykseen, 0-9-erikoiskortit
+	public void jarjestaKortit() {
+		ArrayList<Kortti> cardholder = new ArrayList<Kortti>();
+		ArrayList<Kortti> otherholder = new ArrayList<Kortti>();
+		Object placeholder = new Object();
+		String[] varivalikoima = {"punainen", "sininen", "keltainen", "vihre‰"};
+		for(int k = 0; k<4 ;k++) {
+			for(int i = 0; i<kortit.size(); i++) {
+			try {
+				if ((kortit.get(i).annaVari()).equals(varivalikoima[k])) {
+					otherholder.add(kortit.get(i));
+				}				
+			}catch(NullPointerException e) {} //Jokerin null v‰riarvo...
+			}
+			for(int j = 0; j<10 ;j++) {
+				for(int x = 0; x<otherholder.size(); x++) {
+					placeholder = otherholder.get(x);
+					if(placeholder instanceof Peruskortti) {
+						if(((Peruskortti) placeholder).annaNumero()==j) {
+							cardholder.add(otherholder.get(x));
+						}
+					}
+				}
+			}
+			for(int x = 0; x<otherholder.size(); x++) {
+				if(otherholder.get(x) instanceof Erikoiskortti) {
+					cardholder.add(otherholder.get(x));
+				}
+			}
+			otherholder.clear();
+		}
+		for(int i = 0; i<kortit.size() ;i++) {
+			if(kortit.get(i) instanceof Jokerikortti) {
+				cardholder.add(kortit.get(i));
+			}
+		}
+		for(int i = 0; i<kortit.size() ;i++) {
+			if(kortit.get(i) instanceof Nosta4Jokerikortti) {
+				cardholder.add(kortit.get(i));
+			}
+		}
+		this.kortit = cardholder;
+	}
+	
 	
 	public void tulostaKortit() {
 		int i = 0;

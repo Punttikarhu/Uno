@@ -345,7 +345,6 @@ public class Peli {
 				}
 			} 
 			if (pelaajallaSopivanVarinenKortti) {
-				System.out.println("Et voi k‰ytt‰‰ Nosta 4 -korttia, jos sinulla on sopivan v‰rinen kortti.");
 				return false;
 			}
 			this.annaPelaaja(seuraavaksiVuorossa).nostaNeljaKorttia(this.nostopakka);
